@@ -9,7 +9,7 @@ import static com.codeborne.selenide.Selenide.*;
 public class CardTest {
 
     @Test
-    void shouldSubmitRequest() {
+    public void shouldSubmitRequest() {
         open("http://localhost:7777");
         SelenideElement form = $("form");
         form.$("[data-test-id='name'] input").setValue("Василий");
@@ -20,7 +20,7 @@ public class CardTest {
     }
 
     @Test
-    void shouldNameNull() {
+    public void shouldNameNull() {
         open("http://localhost:7777");
         SelenideElement form = $("form");
         form.$("[data-test-id='name'] input").setValue(null);
@@ -31,7 +31,7 @@ public class CardTest {
     }
 
     @Test
-    void shouldPhoneNull() {
+    public void shouldPhoneNull() {
         open("http://localhost:7777");
         SelenideElement form = $("form");
         form.$("[data-test-id='name'] input").setValue("Василий");
@@ -42,7 +42,7 @@ public class CardTest {
     }
 
     @Test
-    void shouldNameNegative() {
+    public void shouldNameNegative() {
         open("http://localhost:7777");
         SelenideElement form = $("form");
         form.$("[data-test-id='name'] input").setValue("Vasily");
@@ -53,7 +53,7 @@ public class CardTest {
     }
 
     @Test
-    void shouldPhoneNegative() {
+    public void shouldPhoneNegative() {
         open("http://localhost:7777");
         SelenideElement form = $("form");
         form.$("[data-test-id='name'] input").setValue("Василий");
@@ -64,13 +64,13 @@ public class CardTest {
     }
 
     @Test
-    void shouldAgreementNoClick() {
+    public void shouldAgreementNoClick() {
         open("http://localhost:7777");
         SelenideElement form = $("form");
         form.$("[data-test-id=name] input").setValue("Василий");
         form.$("[data-test-id=phone] input").setValue("+79270000000");
         form.$("[type=button]").click();
-        $("[data-test-id=agreement]").should(exist);
+        $("[data-test-id=agreement].input_invalid").should(exist);
     }
 
 }
